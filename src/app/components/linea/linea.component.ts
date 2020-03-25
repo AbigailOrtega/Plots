@@ -93,6 +93,7 @@ export class LineaComponent  implements OnInit{
     }
   
     public randomize(): void {
+      console.log("dfasdfasfasfafasdf");
       let dateCh :DateChart=this.model;
      this.lineChartData=this.dataService.getDataHours(dateCh);
       this.chart.update();
