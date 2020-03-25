@@ -10,7 +10,7 @@ export class DataServiceService {
 
 
   getDataHours(request:DateChart){
-   
+   console.log(request);
    let num:number[]=[20,50,60,5,6,1,
     4,3,0,6,7,12,
     4,55,54,77,44,2,

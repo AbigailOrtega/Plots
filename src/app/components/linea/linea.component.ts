@@ -9,7 +9,7 @@ import { DataServiceService, DateChart } from 'src/app/services/data-service.ser
   styleUrls: ['./linea.component.css']
 })
 export class LineaComponent  implements OnInit{
-  model;
+  model:DateChart;
   public lineChartData: ChartDataSets[]= [
   { data: [65, 59, 80, 81, 56, 55, 40,90,65, 59, 80, 81, 56, 55, 40,90,65, 59, 80, 81, 56, 55, 40,90], label: 'Marcación 2226' },
   {data: [75, 79, 90, 91, 76, 85, 80,80,85, 89, 80, 81, 86, 85, 80,80,85, 89, 80, 81, 86, 85, 80,80], label: 'Marcación 2227' }];
@@ -93,12 +93,7 @@ export class LineaComponent  implements OnInit{
     }
   
     public randomize(): void {
-      let dateCh :DateChart={
-        year:2000,
-        month:1,
-        day:23
-
-      }
+      let dateCh :DateChart=this.model;
      this.lineChartData=this.dataService.getDataHours(dateCh);
       this.chart.update();
     }
