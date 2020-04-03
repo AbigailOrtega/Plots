@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
 import { ChartDataSets } from 'chart.js';
+import { HttpClient } from '@angular/common/http';
+import { stringify } from 'querystring';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataServiceService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
 
   getDataHours(request:DateChart){
-   console.log(request);
-   let num:number[]=[20,50,60,5,6,1,
-    4,3,0,6,7,12,
-    4,55,54,77,44,2,
-    0,44,56,77,3,8];
-    let num1:number[]=[30,60,70,6,7,10,
-      5,4,1,7,8,22,
-      40,75,74,47,64,23,
-      6,45,57,87,30,6];
-    let charData:ChartDataSets[]=[{data: num, label: 'Marcación 2226'},
-                                  {data: num1, label: 'Marcación 2227'}] ; 
-    return charData;
+    let day:string;
+    let month:string;
+    day=(request.day<10)?"0"+request.day:request.day.toString();
+    month=(request.month<10)?"0"+request.month:request.month.toString();
+    //let map26:any;
+    //let map27:any;
+   // let num26:number[];
+    let charData:ChartDataSets[];
+
+    return this.httpClient.get("http://localhost:8080/GraficaInformaRest/"+day+"-"+month+"-"+request.year);
   }
 }
 
