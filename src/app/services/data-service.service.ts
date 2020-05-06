@@ -21,7 +21,7 @@ export class DataServiceService {
    // let num26:number[];
     let charData:ChartDataSets[];
 
-    return this.httpClient.get("http://localhost:8080/GraficaInformaRest/"+day+"-"+month+"-"+request.year);
+    return this.httpClient.get(""+day+"-"+month+"-"+request.year);
   }
 }
 
