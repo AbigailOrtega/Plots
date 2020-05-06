@@ -21,7 +21,7 @@ export class DataServiceService {
    // let num26:number[];
     let charData:ChartDataSets[];
 
-    return this.httpClient.get(""+day+"-"+month+"-"+request.year);
+    return this.httpClient.get("http://intranet.telcel.com:9046/GraficaInformaRest/"+day+"-"+month+"-"+request.year);
   }
 }
 
