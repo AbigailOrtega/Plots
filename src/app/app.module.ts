@@ -6,13 +6,23 @@ import { AppComponent } from './app.component';
 import { ChartsModule} from 'ng2-charts';
 import { LineaComponent } from './components/linea/linea.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { NoticiaComponent } from './components/noticia/noticia.component';
+import { PrincipalComponent } from './components/principal/principal.component';
+import { NoticiaRegularComponent } from './components/noticia-regular/noticia-regular.component';
+import { NoticiaUrgenteComponent } from './components/noticia-urgente/noticia-urgente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LineaComponent
+    LineaComponent,
+    NavBarComponent,
+    NoticiaComponent,
+    PrincipalComponent,
+    NoticiaRegularComponent,
+    NoticiaUrgenteComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     ChartsModule,
     FormsModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

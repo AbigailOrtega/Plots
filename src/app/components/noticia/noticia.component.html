@@ -1,0 +1,87 @@
+<div class="container">
+
+
+    <form [formGroup]="parentForm" (ngSubmit)="save(content,parentForm)">
+        <div *ngIf="!noticiaNacional" name="estados">
+        <h3>Elige los estados correspondeintes</h3>
+        <hr>
+        <div class="row">
+            <div class="col-md-3">
+                <div *ngFor="let data of dataEstados1; let i=index">
+                    <label>
+                        <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" /> {{data.name}}
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div *ngFor="let data of dataEstados2; let i=index">
+                    <label>
+                        <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" /> {{data.name}}
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div *ngFor="let data of dataEstados3; let i=index">
+                    <label>
+                        <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" /> {{data.name}}
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div *ngFor="let data of dataEstados4; let i=index">
+                    <label>
+                        <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" /> {{data.name}}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <h3>¿Cuál es el texto?</h3>
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <label>
+                    <h5>Texto de la noticia</h5>
+                </label>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <textarea cols="33" [class.is-invalid]="textoNoticiaNoValido"
+                        formControlName="textoNoticia"></textarea>
+                </div>
+                <div class="row">
+                    <small class="text-danger" *ngIf="textoNoticiaNoValido">Ingrese un texto valido.</small>
+                </div>
+                <div class="row">
+                    <small class="text-primary">{{160- parentForm.controls.textoNoticia.value.length}} Caracteres
+                        restantes</small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-5">
+                <button [disabled]="!parentForm.valid" type="submit" class="btn btn-success">Guardar</button>
+                <button type="button" class="btn btn-primary" (click)="borrar()">Borrar</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Noticia</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Noticia guardada exitosamente</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cerrar</button>
+    </div>
+</ng-template>
