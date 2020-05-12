@@ -1,55 +1,94 @@
 <div class="container">
-    <h2>Noticia Historico</h2>
-    <hr>
-      
-        <div class="row">
-            <div class="col-md-4">
-                <label>
-                    <h5>Selecciona el rango de fechas.</h5>
-                </label>
-            </div>
-            <div class="col-md-8">
-                <form [formGroup]="formHistorico" (ngSubmit)="save(formHistorico)" class="form-inline">
-                    <div class="col-md-4">
-                        <div class="input-group">
-                            <input class="form-control" formControlName="startDate" placeholder="yyyy-mm-dd" name="dpStart" ngbDatepicker #dpStart="ngbDatepicker" >
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary calendar" (click)="dpStart.toggle()" type="button"></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="input-group">
-                            <input class="form-control" formControlName="endDate" placeholder="yyyy-mm-dd" name="dpEnd"  ngbDatepicker #dpEnd="ngbDatepicker">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary calendar" (click)="dpEnd.toggle()" type="button"></button>
-                            </div>
-                        </div>
-                    </div>
-                    <button [disabled]="!formHistorico.valid" type="submit" class="btn btn-primary">Consultar</button>
-                </form>
-            </div>
+    <div class="row">
+        <div class="col-md-9">
+            <h2>Noticia Historico</h2>
         </div>
+        <div class="col-md-3">
+            <button type="button" (click)="showSupcriptroes(content)" class="btn btn-outline-primary button">Supscritores</button>
+        </div>
+    </div>
+    
+    <hr>
 
-        <div *ngIf="showTable" class="container">
-            <table class="table table-striped">
-                <thead>
-                  <tr>
+    <div class="row">
+        <div class="col-md-4">
+            <label>
+                <h5>Selecciona el rango de fechas.</h5>
+            </label>
+        </div>
+        <div class="col-md-8">
+            <form [formGroup]="formHistorico" (ngSubmit)="save(formHistorico)" class="form-inline">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input class="form-control" formControlName="startDate" placeholder="yyyy-mm-dd" name="dpStart"
+                            ngbDatepicker #dpStart="ngbDatepicker">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="dpStart.toggle()"
+                                type="button"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input class="form-control" formControlName="endDate" placeholder="yyyy-mm-dd" name="dpEnd"
+                            ngbDatepicker #dpEnd="ngbDatepicker">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="dpEnd.toggle()"
+                                type="button"></button>
+                        </div>
+                    </div>
+                </div>
+                <button [disabled]="!formHistorico.valid" type="submit" class="btn btn-primary">Consultar</button>
+            </form>
+        </div>
+    </div>
+
+    <div *ngIf="showTable" class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
                     <th scope="col">Fecha</th>
                     <th scope="col">Mensaje</th>
                     <th scope="col">Tipo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor=" let item of historico">
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor=" let item of historico">
                     <th>{{item.fecha}}</th>
                     <td>{{item.mensaje}}</td>
                     <td>{{item.tipo}}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <button type="button" class="btn btn-primary" (click)="exportAsXLSX()">Exportar archivo</button>
-        </div>
-  
-  </div>
-  
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" (click)="exportAsXLSX()">Exportar archivo</button>
+    </div>
+
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Noticia</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Subscriptores</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor=" let item of subscriptores">
+                    <th>{{item.estado}}</th>
+                    <td>{{item.subscriptores}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cerrar</button>
+    </div>
+</ng-template>

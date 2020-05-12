@@ -27,9 +27,26 @@ export class NoticiaHistoricoService {
     return historicoList;
   }
   
+  getSubscriptores() {
+  const  subscriptores: Subscriptror[]=[
+    {estado: "Aguascalientes",
+      subscriptores: "300"
+    },{estado: "Queretaro",
+    subscriptores: "301"
+  },{
+    estado: "Puebla",
+      subscriptores: "302"
+  }]
+  return subscriptores;
+
+  }
   
 }
 
+export interface Subscriptror{
+  estado: string,
+  subscriptores: string
+}
 
 export interface Historico{
   fecha: string,

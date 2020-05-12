@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { stringify } from 'querystring';
-import { NoticiaHistoricoService, Historico } from 'src/app/services/noticia-historico.service';
+import { NoticiaHistoricoService, Historico, Subscriptror } from 'src/app/services/noticia-historico.service';
 import { ExcelServiceService } from 'src/app/services/excel-service.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-noticia-historico',
@@ -12,9 +13,10 @@ import { ExcelServiceService } from 'src/app/services/excel-service.service';
 export class NoticiaHistoricoComponent implements OnInit {
   showTable:Boolean;
   formHistorico:FormGroup;
+  subscriptores: Subscriptror[];
    historico:Historico[];
 
-  constructor(private historicoService: NoticiaHistoricoService, private excelService: ExcelServiceService) {
+  constructor( private modalService: NgbModal,private historicoService: NoticiaHistoricoService, private excelService: ExcelServiceService) {
     this.showTable=false;
     this.formHistorico= new FormGroup({
       startDate: new FormControl("",[Validators.required]),
@@ -34,4 +36,13 @@ export class NoticiaHistoricoComponent implements OnInit {
   exportAsXLSX():void {
     this.excelService.exportAsExcelFile(this.historico, 'HistoricoNoticias');
  }
+
+ showSupcriptroes(content){
+  this.subscriptores=this.historicoService.getSubscriptores();
+  this.open(content);
+ }
+
+ open(content) {
+  this.modalService.open(content);
+}
 }
