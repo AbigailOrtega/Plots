@@ -13,6 +13,7 @@ import { NoticiaComponent } from './components/noticia/noticia.component';
 import { PrincipalComponent } from './components/principal/principal.component';
 import { NoticiaRegularComponent } from './components/noticia-regular/noticia-regular.component';
 import { NoticiaUrgenteComponent } from './components/noticia-urgente/noticia-urgente.component';
+import { NoticiaHistoricoComponent } from './components/noticia-historico/noticia-historico.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NoticiaUrgenteComponent } from './components/noticia-urgente/noticia-ur
     NoticiaComponent,
     PrincipalComponent,
     NoticiaRegularComponent,
-    NoticiaUrgenteComponent
+    NoticiaUrgenteComponent,
+    NoticiaHistoricoComponent
   ],
   imports: [
     BrowserModule,
