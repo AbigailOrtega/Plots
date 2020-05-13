@@ -1,4 +1,9 @@
 .flex-size{
     width: 70%;
+    margin-left: 10%;
+   
+}
+.center{
     align-content: center;
+    margin-right: 0px;
 }

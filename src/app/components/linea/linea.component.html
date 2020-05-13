@@ -1,34 +1,32 @@
-
-<h1>
-    Gráficos <small>x Hora</small>
-</h1>
-<hr>
-<form class="form-inline">
-    <div class="form-group">
-        <div class="input-group">
-            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (ngModelChange)="update()">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+<div class="container">
+    <h1>
+        Gráficos <small>x Hora</small>
+    </h1>
+    <hr>
+    <form class="form-inline">
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+                    #d="ngbDatepicker" (ngModelChange)="update()">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
 
-<hr/>
-<!--pre>Model: {{ model | json }}</pre-->
-<div class="flex flex-size">
+    <hr />
+    <!--pre>Model: {{ model | json }}</pre-->
+    <div class=" flex flex-size center">
 
-    <div class="flex-item">
-        <div style="display: block;">
-            <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+        <div class="center flex-item">
+            <div class=" row center" style="display: block;">
+                <div class="col-md-12">
+                    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+                    [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+                    (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="flex-item">
-        <table class="table table-responsive table-condensed">
-            <!--tr>
-                <th *ngFor="let label of lineChartLabels">{{label}}</th>
-            </tr-->
-
-        </table>
     </div>
 </div>
