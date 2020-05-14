@@ -14,6 +14,8 @@ import { PrincipalComponent } from './components/principal/principal.component';
 import { NoticiaRegularComponent } from './components/noticia-regular/noticia-regular.component';
 import { NoticiaUrgenteComponent } from './components/noticia-urgente/noticia-urgente.component';
 import { NoticiaHistoricoComponent } from './components/noticia-historico/noticia-historico.component';
+import { AdministracionComponent } from './components/administracion/administracion.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { NoticiaHistoricoComponent } from './components/noticia-historico/notici
     PrincipalComponent,
     NoticiaRegularComponent,
     NoticiaUrgenteComponent,
-    NoticiaHistoricoComponent
+    NoticiaHistoricoComponent,
+    AdministracionComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

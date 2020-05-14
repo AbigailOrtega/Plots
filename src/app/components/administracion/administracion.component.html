@@ -1,0 +1,136 @@
+<div class="container">
+    <h2>Administración</h2>
+    <hr>
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <form [formGroup]="parentForm" (ngSubmit)="save(content,parentForm)">
+
+                <h3>Nuevo Usuario</h3>
+                <hr>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>
+                                    <h5>Nombre de usuario </h5>
+                                </label>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <input [class.is-invalid]="nombreUsuarioNoValido" formControlName="nombreUsuario">
+                                </div>
+                                <div class="row">
+                                    <small class="text-danger" *ngIf="nombreUsuarioNoValido">Ingrese un texto
+                                        valido.</small>
+                                </div>
+                                <div class="row">
+                                    <small class="text-primary">{{12- parentForm.controls.nombreUsuario.value.length}}
+                                        Caracteres
+                                        restantes</small>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>
+                                    <h5>Contraseña</h5>
+                                </label>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <input type="password" [class.is-invalid]="contrasenaNoValido" formControlName="contrasena">
+                                </div>
+                                <div class="row">
+                                    <small class="text-danger" *ngIf="contrasenaNoValido">Ingrese un texto
+                                        valido.</small>
+                                </div>
+                                <div class="row">
+                                    <small class="text-primary">{{12- parentForm.controls.contrasena.value.length}}
+                                        Caracteres
+                                        restantes</small>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>
+                                    <h5>Confirmar contraseña </h5>
+                                </label>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <input type="password" [class.is-invalid]="confirmacionContrasenaNoValido"
+                                        formControlName="confirmacionContrasena">
+                                </div>
+                                <div class="row">
+                                    <small class="text-danger" *ngIf="confirmacionContrasenaNoValido">Las contraseñas no coinciden</small>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>
+                                    <h5>Nuúmero telefonico</h5>
+                                </label>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <input [class.is-invalid]="numeroTelefonicoNoValido"
+                                        formControlName="numeroTelefonico">
+                                </div>
+                                <div class="row">
+                                    <small class="text-danger" *ngIf="numeroTelefonicoNoValido">Ingrese un texto
+                                        valido.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-5">
+                        <label>
+                            <h5>Permisos </h5>
+                        </label>
+                        <div class="row" *ngFor="let data of dataPermisos; let i=index">
+                            <label>
+                                <input type="checkbox" [value]="data.valor" (change)="onCheckboxChange($event)" />
+                                {{data.name}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10"></div>
+                    <div class="col-md-2">
+                        <button [disabled]="!parentForm.valid" type="submit" class="btn btn-success">Guardar</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Usuario</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>{{textAdministracion}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cerrar</button>
+    </div>
+</ng-template>
+
+
+
+  
