@@ -1,9 +1,5 @@
 .flex-size{
-    width: 70%;
-    margin-left: 10%;
-   
+    width: 100%;
+    margin-left: 0px;
 }
-.center{
-    align-content: center;
-    margin-right: 0px;
-}
+

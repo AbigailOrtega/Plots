@@ -44,25 +44,27 @@
     </div>
 
     <div *ngIf="showTable" class="container">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Mensaje</th>
-                    <th scope="col">Tipo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor=" let item of historico">
-                    <th>{{item.fecha}}</th>
-                    <td>{{item.mensaje}}</td>
-                    <td>{{item.tipo}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <button type="button" class="btn btn-primary" (click)="exportAsXLSX()">Exportar archivo</button>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Mensaje</th>
+                        <th scope="col">Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor=" let item of historico">
+                        <th>{{item.fecha}}</th>
+                        <td>{{item.mensaje}}</td>
+                        <td>{{item.tipo}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary" (click)="exportAsXLSX()">Exportar archivo</button>
+       
+        </div>
     </div>
-
 </div>
 
 <ng-template #content let-c="close" let-d="dismiss">

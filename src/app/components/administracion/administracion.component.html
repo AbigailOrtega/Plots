@@ -12,13 +12,13 @@
                 <div class="row">
                     <div class="col-md-7">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div  class="col-md-5">
                                 <label>
                                     <h5>Nombre de usuario </h5>
                                 </label>
                             </div>
                             <div class="col-md-7">
-                                <div class="row">
+                                <div class=" row">
                                     <input [class.is-invalid]="nombreUsuarioNoValido" formControlName="nombreUsuario">
                                 </div>
                                 <div class="row">
@@ -34,7 +34,7 @@
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-md-5">
+                            <div  class="col-md-5">
                                 <label>
                                     <h5>Contraseña</h5>
                                 </label>
@@ -61,7 +61,7 @@
                                     <h5>Confirmar contraseña </h5>
                                 </label>
                             </div>
-                            <div class="col-md-7">
+                            <div class=" col-md-7">
                                 <div class="row">
                                     <input type="password" [class.is-invalid]="confirmacionContrasenaNoValido"
                                         formControlName="confirmacionContrasena">
@@ -95,11 +95,11 @@
                         <label>
                             <h5>Permisos </h5>
                         </label>
-                        <div class="row" *ngFor="let data of dataPermisos; let i=index">
-                            <label>
-                                <input type="checkbox" [value]="data.valor" (change)="onCheckboxChange($event)" />
+                        <div class="checkboxClass row" *ngFor="let data of dataPermisos; let i=index">
+                           
+                                <input class="checkboox" type="checkbox" [value]="data.valor" (change)="onCheckboxChange($event)" />
                                 {{data.name}}
-                            </label>
+                            
                         </div>
                     </div>
                 </div>

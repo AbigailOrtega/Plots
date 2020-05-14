@@ -1,6 +1,33 @@
 h2{
  margin-top: 2%;
+ margin-bottom: 2%;
 }
 button{
     margin-top: 15%;
 }
+
+h5{
+    margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+    
+    /* For mobile phones: */
+    input{
+        margin-left: auto;
+        margin-top: 5px;
+    }
+    small{
+        margin-left: auto;
+    }
+    div{
+        margin-bottom: 1%;
+    }
+    
+    .checkboxClass{
+        margin-left: 10%;
+    }
+    .checkboox{
+        margin-left: 5% !important;
+    }
+  }

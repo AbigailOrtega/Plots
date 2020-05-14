@@ -13,11 +13,12 @@
                                     <h5>Nombre de usuario </h5>
                                 </label>
                             </div>
-                            <div class="col-md-7">
-                                <div class="row">
-                                    <input [class.is-invalid]="nombreUsuarioNoValido" formControlName="nombreUsuario">
+                           
+                            <div class=" col-md-7">
+                                <div class="devCenter row">
+                                    <input  [class.is-invalid]="nombreUsuarioNoValido" formControlName="nombreUsuario">
                                 </div>
-                                <div class="row">
+                                <div class="devCenter row">
                                     <small class="text-danger" *ngIf="nombreUsuarioNoValido">El valor es requerido</small>
                                 </div>
                             </div>
@@ -29,14 +30,15 @@
                                 </label>
                             </div>
                             <div class="col-md-7">
-                                <div class="row">
+                                <div class="devCenter row">
                                     <input type="password" [class.is-invalid]="contrasenaNoValido"
                                         formControlName="contrasena">
                                 </div>
-                                <div class="row">
+                                <div class="devCenter row">
                                     <small class="text-danger" *ngIf="contrasenaNoValido">El valor es requerido</small>
                                 </div>
-                                <div class="row">
+                                
+                                <div class="devCenter row">
                                     <a (click)="recuperarPassword(contentRecuperarPassword)">¿Olvidaste tu contraseña?</a>
                                 </div>
 
@@ -49,7 +51,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-10"></div>
-                    <div class="col-md-2">
+                    <div class="devCenter col-md-2">
                         <button [disabled]="!parentForm.valid" type="submit" class="btn btn-success">Enviar</button>
 
                     </div>
