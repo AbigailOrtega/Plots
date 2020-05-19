@@ -27,10 +27,17 @@ export class NoticiaHistoricoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  save(form:any){
+  showHistorico(form:any){
     console.log(form.value.startDate);
     console.log(form.value.endDate);
-    this.historico=this.historicoService.getHistoricoList(form.value.startDate,form.value.endDate);
+    const dayStart=(form.value.startDate.day<10)?"0"+form.value.startDate.day:form.value.startDate.day.toString();
+    const monthStart=(form.value.startDate.month<10)?"0"+form.value.startDate.month:form.value.startDate.month.toString();
+    const dayEnd=(form.value.endDate.day<10)?"0"+form.value.endDate.day:form.value.endDate.day.toString();
+    const monthEnd=(form.value.endDate.month<10)?"0"+form.value.endDate.month:form.value.endDate.month.toString();
+    this.historicoService.getHistoricoList(form.value.startDate.year+"-"+monthStart+"-"+dayStart,form.value.endDate.year+"-"+monthEnd+"-"+dayEnd).subscribe(data=>{
+      console.log(data);
+      //this.historico=data;
+    })
     this.showTable=true;
   }
   exportAsXLSX():void {
@@ -38,8 +45,12 @@ export class NoticiaHistoricoComponent implements OnInit {
  }
 
  showSupcriptroes(content){
-  this.subscriptores=this.historicoService.getSubscriptores();
-  this.open(content);
+  this.historicoService.getSubscriptores().subscribe(data=>{
+    console.log(data);
+    this.subscriptores=data;
+    this.open(content);
+  })
+  
  }
 
  open(content) {

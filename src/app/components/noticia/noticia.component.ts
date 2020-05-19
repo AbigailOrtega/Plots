@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NoticiaService } from 'src/app/services/noticia.service';
 
 @Component({
   selector: 'app-noticia',
@@ -9,54 +10,55 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class NoticiaComponent implements OnInit {
 
+  textoModal:any;
   @Input() noticiaNacional:Boolean;
   @Input() noticiaUrgente:Boolean;
   parentForm:FormGroup;
   dataEstados1:Array<any> = [
-    { name: 'Aguascalientes', value: 'Aguascalientes' },
-    { name: 'Chiapas', value: 'Chiapas' },
-    { name: 'DF', value: 'DF' },
-    { name: 'Hidalgo', value: 'Hidalgo' },
-    { name: 'Morelos', value: 'Morelos' },
-    { name: 'Puebla', value: 'Puebla'},
-    { name: 'Sinaloa', value: 'Sinaloa' },
-    { name: 'Tlaxcala', value: 'Tlaxcala' }
+    { name: 'Aguascalientes', value: '1' },
+    { name: 'Chiapas', value: '7' },
+    { name: 'DF', value: '9' },
+    { name: 'Hidalgo', value: '13' },
+    { name: 'Morelos', value: '17' },
+    { name: 'Puebla', value: '21'},
+    { name: 'Sinaloa', value: '25' },
+    { name: 'Tlaxcala', value: '29' }
    
     
   ]
   dataEstados2:Array<any> = [
-    { name: 'BCN', value: 'BCN' },
-    { name: 'Chihuahua', value: 'Chihuahua' },
-    { name: 'Durango', value: 'Durango' },
-    { name: 'Jalisco', value: 'Jalisco' },
-    { name: 'Nayarit', value: 'Nayarit' },
-    { name: 'Querétaro', value: 'Queretaro' },
-    { name: 'Sonora', value: 'Sonora' }, 	
-    { name: 'Veracruz', value: 'Veracruz' }
+    { name: 'BCN', value: '2' },
+    { name: 'Chihuahua', value: '8' },
+    { name: 'Durango', value: '10' },
+    { name: 'Jalisco', value: '14' },
+    { name: 'Nayarit', value: '18' },
+    { name: 'Querétaro', value: '22' },
+    { name: 'Sonora', value: '26' }, 	
+    { name: 'Veracruz', value: '30' }
     
   ]
   dataEstados3:Array<any> = [
-    { name: 'BCS', value: 'BCS' },
-    { name: 'Coahuila', value: 'Coahuila' },
-    { name: 'Guanajuato', value: 'Guanajuato' },
-    { name: 'Edo. de México', value: 'Edo' },
-    { name: 'Nuevo León', value: 'NuevoLeon' },
-    { name: 'Quintana Roo', value: 'QuintanaRoo' },
-    { name: 'Tabasco', value: 'Tabasco' },
-    { name: 'Yucatán', value: 'Yucatan' }
+    { name: 'BCS', value: '3' },
+    { name: 'Coahuila', value: '5' },
+    { name: 'Guanajuato', value: '11' },
+    { name: 'Edo. de México', value: '15' },
+    { name: 'Nuevo León', value: '19' },
+    { name: 'Quintana Roo', value: '23' },
+    { name: 'Tabasco', value: '27' },
+    { name: 'Yucatán', value: '31' }
   ]
   dataEstados4: Array<any> = [
-    { name: 'Campeche', value: 'Campeche' },
-    { name: 'Colima', value: 'Colima' },
-    { name: 'Guerrero', value: 'Guerrero' },
-    { name: 'Michoacan', value: 'Michoacan' },
-    { name: 'Oaxaca', value: 'Oaxaca' },
-    { name: 'SLP', value: 'SLP' },
-    { name: 'Tamaulipas', value: 'Tamaulipas' },
-    { name: 'Zacatecas', value: 'Zacatecas' }
+    { name: 'Campeche', value: '4' },
+    { name: 'Colima', value: '6' },
+    { name: 'Guerrero', value: '12' },
+    { name: 'Michoacan', value: '16' },
+    { name: 'Oaxaca', value: '20' },
+    { name: 'SLP', value: '24' },
+    { name: 'Tamaulipas', value: '28' },
+    { name: 'Zacatecas', value: '32' }
   ];
 
-  constructor(    private modalService: NgbModal,private fb: FormBuilder
+  constructor( private noticiaService:NoticiaService,private modalService: NgbModal,private fb: FormBuilder
     ) {
     this.parentForm=this.fb.group({
       textoNoticia: new FormControl("",[Validators.required,Validators.maxLength(160)]),
@@ -96,7 +98,28 @@ export class NoticiaComponent implements OnInit {
     console.log(form.value);
     console.log("Noticia Urgente"+this.noticiaUrgente);
     console.log("Noticia Nacional"+this.noticiaNacional);
-    this.open(content);
+    if(this.noticiaNacional && !this.noticiaUrgente){
+      this.noticiaService.guardarNoticiaRegularNacional(form.value.textoNoticia).subscribe( data=>{
+        this.textoModal=data;
+         this.open(content);
+      })
+    }else if(!this.noticiaNacional && !this.noticiaUrgente){
+      this.noticiaService.guardarNoticiaRegularLocal(form.value.textoNoticia,form.value.arrayEstados).subscribe(data=>{
+        this.textoModal=data;
+         this.open(content);
+      });
+    }else if(this.noticiaNacional && this.noticiaUrgente){
+      this.noticiaService.guardarNoticiaUrgenteNacional(form.value.textoNoticia).subscribe(data=>{
+        this.textoModal=data;
+        this.open(content);
+      })
+    }else{
+      this.noticiaService.guardarNotciaUrgenteLocal(form.value.textoNoticia,form.value.arrayEstados).subscribe(data=>{
+        this.textoModal=data;
+        this.open(content);
+      });
+    }
+   
     
   }
 

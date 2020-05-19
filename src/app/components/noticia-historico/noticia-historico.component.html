@@ -17,7 +17,7 @@
             </label>
         </div>
         <div class="col-md-8">
-            <form [formGroup]="formHistorico" (ngSubmit)="save(formHistorico)" class="form-inline">
+            <form [formGroup]="formHistorico" (ngSubmit)="showHistorico(formHistorico)" class="form-inline">
                 <div class="col-md-4">
                     <div class="input-group">
                         <input class="form-control" formControlName="startDate" placeholder="yyyy-mm-dd" name="dpStart"
@@ -79,13 +79,13 @@
             <thead>
                 <tr>
                     <th scope="col">Estado</th>
-                    <th scope="col">Subscriptores</th>
+                    <th scope="col">Suscriptores</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor=" let item of subscriptores">
                     <th>{{item.estado}}</th>
-                    <td>{{item.subscriptores}}</td>
+                    <td>{{item.suscriptores}}</td>
                 </tr>
             </tbody>
         </table>

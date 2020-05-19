@@ -1,43 +1,23 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { PATH } from '../pathVariable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoticiaHistoricoService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
 
-  getHistoricoList(start:string, end: string){
-    const historicoList :Historico[]=[{
-      fecha: "2020-05-6",
-      mensaje: "sajfñsdjfñdstring",
-      tipo: "urgente aguascalientes"
-    }
-    ,
-    {
-      fecha: "2020-05-89",
-      mensaje: "stafadsfdasfring",
-      tipo: "asdfasdfadsfdsd"
-    },{
-      fecha: "2020-66-99",
-      mensaje: "stasdfasdfasdfasdfsadfasdfasdfasdfasdfdsfdsfasfsssssssssssssssssssssssssssssssssssssssring",
-      tipo: "naciaonal"
-    }]
-    return historicoList;
+  getHistoricoList(fechaInicio:string, fechaFin: string){
+    
+    return this.httpClient.get(PATH.BASE_API_URL+'/historicoNoticia/'+fechaInicio+'/'+fechaFin);
   }
   
   getSubscriptores() {
-  const  subscriptores: Subscriptror[]=[
-    {estado: "Aguascalientes",
-      subscriptores: "300"
-    },{estado: "Queretaro",
-    subscriptores: "301"
-  },{
-    estado: "Puebla",
-      subscriptores: "302"
-  }]
-  return subscriptores;
+  
+  return this.httpClient.get<Subscriptror[]>(PATH.BASE_API_URL+'/consultaSuscriptores');
 
   }
   
@@ -45,7 +25,7 @@ export class NoticiaHistoricoService {
 
 export interface Subscriptror{
   estado: string,
-  subscriptores: string
+  suscriptores: string
 }
 
 export interface Historico{
