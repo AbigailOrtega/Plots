@@ -13,10 +13,10 @@
                                     <h5>Nombre de usuario </h5>
                                 </label>
                             </div>
-                           
+
                             <div class=" col-md-7">
                                 <div class="devCenter row">
-                                    <input  [class.is-invalid]="nombreUsuarioNoValido" formControlName="nombreUsuario">
+                                    <input [class.is-invalid]="nombreUsuarioNoValido" formControlName="nombreUsuario">
                                 </div>
                                 <div class="devCenter row">
                                     <small class="text-danger" *ngIf="nombreUsuarioNoValido">El valor es requerido</small>
@@ -31,15 +31,14 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="devCenter row">
-                                    <input type="password" [class.is-invalid]="contrasenaNoValido"
-                                        formControlName="contrasena">
+                                    <input type="password" [class.is-invalid]="contrasenaNoValido" formControlName="contrasena">
                                 </div>
                                 <div class="devCenter row">
                                     <small class="text-danger" *ngIf="contrasenaNoValido">El valor es requerido</small>
                                 </div>
-                                
+
                                 <div class="devCenter row">
-                                    <a (click)="recuperarPassword(contentRecuperarPassword)">¿Olvidaste tu contraseña?</a>
+                                    <button type="button" (click)="recuperarPassword(contentRecuperarPassword)" class="btn btn-link ">¿Olvidaste tu contraseña?</button>
                                 </div>
 
                             </div>
@@ -49,10 +48,10 @@
                     <br>
 
                 </div>
-                <div class="row">
-                    <div class="col-md-10"></div>
-                    <div class="devCenter col-md-2">
-                        <button [disabled]="!parentForm.valid" type="submit" class="btn btn-success">Enviar</button>
+                <div class="row ">
+                    <div class="col-md-10 "></div>
+                    <div class="devCenter col-md-2 ">
+                        <button [disabled]="!parentForm.valid " type="submit " class="btn btn-success ">Enviar</button>
 
                     </div>
                 </div>
@@ -61,56 +60,54 @@
     </div>
 </div>
 
-<ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Ingresar la Clave que recibiste por Mensaje de Texto (SMS)</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-            <span aria-hidden="true">&times;</span>
+<ng-template #content let-c="close " let-d="dismiss ">
+    <div class="modal-header ">
+        <h4 class="modal-title " id="modal-basic-title ">Ingresar la Clave que recibiste por Mensaje de Texto (SMS)</h4>
+        <button type="button " class="close " aria-label="Close " (click)="d( 'Cross click') ">
+            <span aria-hidden="true ">&times;</span>
         </button>
     </div>
 
-    <form [formGroup]="formModalSMS" (ngSubmit)="checkSMSToken(formModalSMS)">
-        <div class="modal-body">
+    <form [formGroup]="formModalSMS " (ngSubmit)="checkSMSToken(formModalSMS) ">
+        <div class="modal-body ">
             <label>
                 Se ha generado y enviado una clave la cual recibiste por mensaje de texto, favor de ingresarla.</label>
-            <input type="texto" formControlName="smsClave">
-            <div class="row">
-                <small class="text-danger" *ngIf="smsClaveNoValido">El valor es requerido</small>
+            <input type="texto " formControlName="smsClave">
+            <div class="row ">
+                <small class="text-danger " *ngIf="smsClaveNoValido ">El valor es requerido</small>
             </div>
         </div>
 
-        <div class="modal-footer">
-            <button  [disabled]="!formModalSMS.valid" type="submit" class="btn btn-outline-dark">Enviar</button>
-            <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cerrar</button>
+        <div class="modal-footer ">
+            <button [disabled]="!formModalSMS.valid " type="submit " class="btn btn-outline-dark ">Enviar</button>
+            <button type="button " class="btn btn-outline-dark " (click)="c( 'Save click') ">Cerrar</button>
         </div>
     </form>
 
 
 </ng-template>
 
-<ng-template #contentRecuperarPassword let-c="close" let-d="dismiss">
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Recupera tu contraseña        </h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-            <span aria-hidden="true">&times;</span>
+<ng-template #contentRecuperarPassword let-c="close " let-d="dismiss ">
+    <div class="modal-header ">
+        <h4 class="modal-title " id="modal-basic-title ">Recupera tu contraseña </h4>
+        <button type="button " class="close " aria-label="Close " (click)="d( 'Cross click') ">
+            <span aria-hidden="true ">&times;</span>
         </button>
     </div>
 
-    <form [formGroup]="formModalRecueperarPassword" (ngSubmit)="enviarSMSPasswordModal(formModalSMS)">
-        <div class="modal-body">
-            <label *ngIf="contrasenaEnviada"> Contraseña enviada exitosamente.</label>
-            <label *ngIf="!contrasenaEnviada">Recuerda que la contraseña es sensible al uso de mayúsculas y minúsculas. Por favor ingresa tú numero celular Telcel a 10 dígitos y te será enviada tu contraseña por medio de un mensaje de texto SMS.</label>
-            <input *ngIf="!contrasenaEnviada"  type="texto" formControlName="numero">
-            <div class="row">
-                <small *ngIf="!contrasenaEnviada  && numeroNoValido" class="text-danger" >El valor es requerido</small>
+    <form [formGroup]="formModalRecueperarPassword" (ngSubmit)="enviarSMSPasswordModal(formModalSMS) ">
+        <div class="modal-body ">
+            <label *ngIf="contrasenaEnviada "> Contraseña enviada exitosamente.</label>
+            <label *ngIf="!contrasenaEnviada ">Recuerda que la contraseña es sensible al uso de mayúsculas y minúsculas. Por favor ingresa tú numero celular Telcel a 10 dígitos y te será enviada tu contraseña por medio de un mensaje de texto SMS.</label>
+            <input *ngIf="!contrasenaEnviada " type="texto " formControlName="numero">
+            <div class="row ">
+                <small *ngIf="!contrasenaEnviada && numeroNoValido " class="text-danger ">El valor es requerido</small>
             </div>
         </div>
 
-        <div class="modal-footer">
-            <button [disabled]="!formModalRecueperarPassword.valid" *ngIf="!contrasenaEnviada" type="submit" class="btn btn-outline-dark">Enviar</button>
-            <button type="button" class="btn btn-outline-dark" (click)="close(contentRecuperarPassword)">Cerrar</button>
+        <div class="modal-footer ">
+            <button [disabled]="!formModalRecueperarPassword.valid " *ngIf="!contrasenaEnviada " type="submit " class="btn btn-outline-dark ">Enviar</button>
+            <button type="button " class="btn btn-outline-dark " (click)="close(contentRecuperarPassword) ">Cerrar</button>
         </div>
     </form>
-
-
 </ng-template>

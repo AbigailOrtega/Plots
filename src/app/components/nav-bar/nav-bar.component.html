@@ -6,8 +6,8 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class=" nav-item nav-link active color" routerLink="noticiaRegular">Ayuda<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link color" routerLink="administracion">| Administrar </a>
-            <a class="nav-item nav-link color" routerLink="ntociaUrgente">| Salir</a>
+            <a *ngIf="localStorageAttribute" class="nav-item nav-link color" routerLink="administracion">| Administrar </a>
+            <button *ngIf="localStorageAttribute" type="button" (click)="logOut()" class="btn btn-link">| Salir</button>
         </div>
     </div>
 </nav>
