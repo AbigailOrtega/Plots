@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Label, Color, BaseChartDirective } from 'ng2-charts';
 import { DataServiceService, DateChart } from 'src/app/services/data-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-linea',
@@ -87,7 +88,11 @@ export class LineaComponent implements OnInit {
 
   @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
 
-  constructor(public dataService: DataServiceService) { }
+  constructor(private router:Router,public dataService: DataServiceService) { 
+    if(!localStorage.getItem('token') && !localStorage.getItem('user')){
+      this.router.navigate(['/login']);
+    }
+  }
 
   ngOnInit() {
   }
@@ -111,6 +116,14 @@ export class LineaComponent implements OnInit {
         map27['13'], map27['14'], map27['15'], map27['16'], map27['17'], map27['18'],
         map27['19'], map27['20'], map27['21'], map27['22'], map27['23'], map27['24']];
         this.lineChartData =charData=[{data: num26, label: 'Marcación 2226'}, {data: num27, label: 'Marcación 2227'}] ; 
+      },
+      Error =>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('time');
+        localStorage.removeItem('date');
+        this.router.navigate(['/login']);
+        return false;
       }
     );
     

@@ -4,6 +4,7 @@ import { stringify } from 'querystring';
 import { NoticiaHistoricoService, Historico, Subscriptror } from 'src/app/services/noticia-historico.service';
 import { ExcelServiceService } from 'src/app/services/excel-service.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-noticia-historico',
@@ -16,7 +17,10 @@ export class NoticiaHistoricoComponent implements OnInit {
   subscriptores: Subscriptror[];
    historico:Historico[];
 
-  constructor( private modalService: NgbModal,private historicoService: NoticiaHistoricoService, private excelService: ExcelServiceService) {
+  constructor(private router:Router, private modalService: NgbModal,private historicoService: NoticiaHistoricoService, private excelService: ExcelServiceService) {
+    if(!localStorage.getItem('token') && !localStorage.getItem('user')){
+      this.router.navigate(['/login']);
+    }
     this.showTable=false;
     this.formHistorico= new FormGroup({
       startDate: new FormControl("",[Validators.required]),
@@ -36,7 +40,15 @@ export class NoticiaHistoricoComponent implements OnInit {
     const monthEnd=(form.value.endDate.month<10)?"0"+form.value.endDate.month:form.value.endDate.month.toString();
     this.historicoService.getHistoricoList(form.value.startDate.year+"-"+monthStart+"-"+dayStart,form.value.endDate.year+"-"+monthEnd+"-"+dayEnd).subscribe(data=>{
       console.log(data);
-      //this.historico=data;
+      this.historico=data;
+    },
+    Error =>{
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      localStorage.removeItem('time');
+      localStorage.removeItem('date');
+      this.router.navigate(['/login']);
+      return false;
     })
     this.showTable=true;
   }
@@ -49,6 +61,14 @@ export class NoticiaHistoricoComponent implements OnInit {
     console.log(data);
     this.subscriptores=data;
     this.open(content);
+  },
+  Error =>{
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('time');
+    localStorage.removeItem('date');
+    this.router.navigate(['/login']);
+    return false;
   })
   
  }

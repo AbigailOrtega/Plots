@@ -22,6 +22,9 @@ export class AdministracionComponent implements OnInit {
    {name:"Detener Envío", valor:".f"},
    {name:"Recbir Alertas SMS", valor:".f"}]
   constructor(private router:Router, private fb: FormBuilder, private modalService:NgbModal, private administracionService:AdministracionService) { 
+    if(!localStorage.getItem('token') && !localStorage.getItem('user')){
+      this.router.navigate(['/login']);
+    }
     this.parentForm=this.fb.group({
       nombreUsuario: new FormControl("",[Validators.required,Validators.maxLength(12)]),
       contrasena: new FormControl("",[Validators.required,Validators.maxLength(12)]),

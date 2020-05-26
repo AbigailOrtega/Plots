@@ -12,13 +12,9 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  isLogged():Boolean{
-    if(localStorage.getItem('token') !== null){
-      return true;
-    }
-    else {
-      return false; 
-    }
+ 
+  get localStorageAttribute(){
+    return localStorage.getItem('token') && localStorage.getItem('user');
   }
 
 }

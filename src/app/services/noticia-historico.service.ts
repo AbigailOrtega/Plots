@@ -17,7 +17,7 @@ export class NoticiaHistoricoService {
 
   getHistoricoList(fechaInicio:string, fechaFin: string){
     
-    return this.httpClient.get(PATH.BASE_API_URL+'/historicoNoticia/'+fechaInicio+'/'+fechaFin, this.options);
+    return this.httpClient.get<Historico[]>(PATH.BASE_API_URL+'/historicoNoticia/'+fechaInicio+'/'+fechaFin, this.options);
   }
   
   getSubscriptores() {

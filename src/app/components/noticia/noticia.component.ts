@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NoticiaService } from 'src/app/services/noticia.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-noticia',
@@ -58,7 +59,7 @@ export class NoticiaComponent implements OnInit {
     { name: 'Zacatecas', value: '32' }
   ];
 
-  constructor( private noticiaService:NoticiaService,private modalService: NgbModal,private fb: FormBuilder
+  constructor( private router: Router,private noticiaService:NoticiaService,private modalService: NgbModal,private fb: FormBuilder
     ) {
     this.parentForm=this.fb.group({
       textoNoticia: new FormControl("",[Validators.required,Validators.maxLength(160)]),
@@ -102,21 +103,54 @@ export class NoticiaComponent implements OnInit {
       this.noticiaService.guardarNoticiaRegularNacional(form.value.textoNoticia).subscribe( data=>{
         this.textoModal=data;
          this.open(content);
-      })
+      },
+      Error =>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('time');
+        localStorage.removeItem('date');
+        this.router.navigate(['/login']);
+        return false;
+      }
+      )
     }else if(!this.noticiaNacional && !this.noticiaUrgente){
       this.noticiaService.guardarNoticiaRegularLocal(form.value.textoNoticia,form.value.arrayEstados).subscribe(data=>{
         this.textoModal=data;
          this.open(content);
+      },
+      Error =>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('time');
+        localStorage.removeItem('date');
+        this.router.navigate(['/login']);
+        return false;
       });
     }else if(this.noticiaNacional && this.noticiaUrgente){
       this.noticiaService.guardarNoticiaUrgenteNacional(form.value.textoNoticia).subscribe(data=>{
         this.textoModal=data;
         this.open(content);
+      },
+      Error =>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('time');
+        localStorage.removeItem('date');
+        this.router.navigate(['/login']);
+        return false;
       })
     }else{
       this.noticiaService.guardarNotciaUrgenteLocal(form.value.textoNoticia,form.value.arrayEstados).subscribe(data=>{
         this.textoModal=data;
         this.open(content);
+      },
+      Error =>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('time');
+        localStorage.removeItem('date');
+        this.router.navigate(['/login']);
+        return false;
       });
     }
    

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-noticia-regular',
@@ -8,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class NoticiaRegularComponent implements OnInit {
   noticiaNacional:Boolean;
   noticiaUrgente:Boolean;
-  constructor() { 
+  constructor(private router:Router) { 
     this.noticiaNacional=true;
     this.noticiaUrgente=false;
+    if(!localStorage.getItem('token') && !localStorage.getItem('user')){
+      this.router.navigate(['/login']);
+    }
   }
 
   elegirTipNoticia(tipo:string){

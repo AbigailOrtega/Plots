@@ -29,6 +29,10 @@ export class LoginService {
         this.router.navigate(['/noticiaRegular']);
       },
       Error =>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('time');
+        localStorage.removeItem('date');
         this.router.navigate(['/login']);
         return false;
       }
