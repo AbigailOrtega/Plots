@@ -48,15 +48,11 @@ get numeroTelefonicoNoValido(){
 }
 save(content:any,parentForm:any){
   console.log(parentForm.value);
-  const valorAccion=this.administracionService.crearUsuario(parentForm.value);
- if(valorAccion){
-  this.textAdministracion="Usuario creado exitosamente";
- }else{
-   this.textAdministracion="Ocurrio un error en el proceso";
- }
- this.router.navigate(['/']);
- this.open(content);
- 
+  this.administracionService.crearUsuario(parentForm.value.nombreUsuario,parentForm.value.contrasena,parentForm.value.numeroTelefonico,parentForm.value.permisos).subscribe(data=>{
+    this.textAdministracion=data;
+    this.router.navigate(['/']);
+  this.open(content);
+  });
 }
 onCheckboxChange(e){
   const arrayPermisosF: FormArray = this.parentForm.get('permisos') as FormArray;
