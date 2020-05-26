@@ -1,12 +1,14 @@
 html {
     min-height: 100%;
     position: relative;
-  }
-  body {
+}
+
+body {
     margin: 0;
     margin-bottom: 40px;
-  }
-  footer {
+}
+
+footer {
     background-color: black;
     position: absolute;
     bottom: 0;
@@ -14,4 +16,13 @@ html {
     height: 40px;
     color: white;
     align-content: center;
-  }
+}
+
+.principalContainer {
+    background-color: #E8EFF9;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: auto;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
