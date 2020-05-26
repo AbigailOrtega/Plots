@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormControlName } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { LoginService } from 'src/app/services/login.service';
+import { LoginService, User } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +13,11 @@ export class LoginComponent implements OnInit {
   contrasenaEnviada: Boolean;
   parentForm: FormGroup;
   formModalSMS: FormGroup;
+  userLogin:User={
+    password:" ",
+    userName:" ",
+    token:" "
+  };
   constructor(private modalService: NgbModal, private loginService: LoginService) {
     this.formModalRecueperarPassword =new FormGroup({
       numero: new FormControl("",[Validators.required, Validators.minLength(10),Validators.maxLength(10)])
@@ -32,12 +37,15 @@ export class LoginComponent implements OnInit {
   }
   login(content: any, form: any) {
     //check login and sent sms
-    this.loginService.checkUsuarioPassword(form);
+    console.log(form.value.nombreUsuario);
+    this.userLogin.password=form.value.contrasena;
+    this.userLogin.userName=form.value.nombreUsuario;
+    this.loginService.sentTokenSMSLogin(form.value.nombreUsuario);
     this.open(content);
   }
   checkSMSToken(form: any) {
-    //check sms clave y cerrar
-    this.loginService.checkTokenSMSLogin(form);
+    this.userLogin.token=form.value.smsClave;
+    this.loginService.checkUsuarioPasswordandToken(this.userLogin);
     this.modalService.dismissAll();
   }
   recuperarPassword(content) {

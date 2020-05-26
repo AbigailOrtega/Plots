@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ChartDataSets } from 'chart.js';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { stringify } from 'querystring';
 
 @Injectable({
@@ -9,7 +9,12 @@ import { stringify } from 'querystring';
 export class DataServiceService {
 
   constructor(private httpClient: HttpClient) { }
-
+  options = {
+    headers: new HttpHeaders({
+      'Authorization': localStorage.getItem('token'),
+      'Content-Type': 'application/json'
+    })
+  };
 
   getDataHours(request:DateChart){
     let day:string;
@@ -21,7 +26,7 @@ export class DataServiceService {
    // let num26:number[];
     let charData:ChartDataSets[];
 
-    return this.httpClient.get("http://intranet.telcel.com:9046/GraficaInformaRest/"+day+"-"+month+"-"+request.year);
+    return this.httpClient.get("http://intranet.telcel.com:9046/GraficaInformaRest/"+day+"-"+month+"-"+request.year,this.options);
   }
 }
 

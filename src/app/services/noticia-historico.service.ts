@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PATH } from '../pathVariable';
 
 @Injectable({
@@ -8,16 +8,21 @@ import { PATH } from '../pathVariable';
 export class NoticiaHistoricoService {
 
   constructor(private httpClient: HttpClient) { }
-
+  options = {
+    headers: new HttpHeaders({
+      'Authorization': localStorage.getItem('token'),
+      'Content-Type': 'application/json'
+    })
+  };
 
   getHistoricoList(fechaInicio:string, fechaFin: string){
     
-    return this.httpClient.get(PATH.BASE_API_URL+'/historicoNoticia/'+fechaInicio+'/'+fechaFin);
+    return this.httpClient.get(PATH.BASE_API_URL+'/historicoNoticia/'+fechaInicio+'/'+fechaFin, this.options);
   }
   
   getSubscriptores() {
   
-  return this.httpClient.get<Subscriptror[]>(PATH.BASE_API_URL+'/consultaSuscriptores');
+  return this.httpClient.get<Subscriptror[]>(PATH.BASE_API_URL+'/consultaSuscriptores', this.options);
 
   }
   
