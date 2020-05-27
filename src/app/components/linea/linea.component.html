@@ -1,13 +1,12 @@
 <div class="container">
-    <h1>
+    <h2>
         Gráficos <small>x Hora</small>
-    </h1>
+    </h2>
     <hr>
     <form class="form-inline">
         <div class="form-group">
             <div class="input-group">
-                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
-                    #d="ngbDatepicker" (ngModelChange)="update()">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (ngModelChange)="update()">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
                 </div>
@@ -17,13 +16,11 @@
 
     <hr />
     <!--pre>Model: {{ model | json }}</pre-->
-    <div class=" flex flex-size">
+    <div class=" flex flex-size cl">
         <div class="flex-item">
-            <div class=" row " >
+            <div class=" row ">
                 <div class="col-md-12">
-                    <canvas width="100" height="40" baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
-                    [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
-                    (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                    <canvas width="100" height="40" baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
                 </div>
             </div>
         </div>

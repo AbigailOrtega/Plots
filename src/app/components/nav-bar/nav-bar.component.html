@@ -8,7 +8,7 @@
             <button type="button" class="btn navbarTelcel">México D.F., {{date | date:'mediumDate'}}</button>
             <button class="btn btn-link navbarTelcel" routerLink="noticiaRegular">| Ayuda<span class="sr-only">(current)</span></button>
             <button *ngIf="localStorageAttribute" type="button" class="btn btn-link navbarTelcel" routerLink="administracion">| Administrar</button>
-            <button *ngIf="localStorageAttribute" type="button" (click)="logOut()" class="btn btn-linknavbarTelcel">| Salir</button>
+            <button *ngIf="localStorageAttribute" type="button" (click)="logOut()" class="btn btn-link navbarTelcel">| Salir</button>
         </div>
     </div>
 </nav>

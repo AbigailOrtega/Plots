@@ -1,5 +1,18 @@
-.flex-size{
+.flex-size {
     width: 100%;
     margin-left: 0px;
 }
 
+.cl {
+    margin-bottom: 40px;
+}
+
+h2 {
+    padding-top: 10px;
+    font-weight: bold;
+    color: rgb(11, 77, 162) !important;
+}
+
+.container {
+    margin-bottom: 40px;
+}

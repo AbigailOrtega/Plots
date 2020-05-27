@@ -1,22 +1,26 @@
-h3{
+h3 {
     margin-top: 5%;
-   
 }
 
-hr{
+hr {
     margin-bottom: 5%;
 }
 
-button{
+button {
     float: right;
     margin-left: 2%;
     margin-right: 2%;
     margin-top: 5%;
 }
 
-small{
+small {
     margin-bottom: 1%;
 }
-textarea{
+
+textarea {
     margin-left: 2%;
+}
+
+.container {
+    margin-bottom: 40px;
 }
