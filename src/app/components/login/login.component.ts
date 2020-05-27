@@ -45,8 +45,9 @@ export class LoginComponent implements OnInit {
     console.log(form.value.nombreUsuario);
     this.userLogin.password=form.value.contrasena;
     this.userLogin.userName=form.value.nombreUsuario;
-    this.loginService.sentTokenSMSLogin(form.value.nombreUsuario);
-    this.open(content);
+    this.loginService.sentTokenSMSLogin(form.value.nombreUsuario).subscribe(data=>{
+      this.open(content);
+    });
   }
   checkSMSToken(form: any) {
     this.userLogin.token=form.value.smsClave;

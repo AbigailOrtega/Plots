@@ -44,10 +44,10 @@ export class LoginService {
     )
     return true;
   }
-  sentTokenSMSLogin(token:any){
-    
-return true;
+  sentTokenSMSLogin(numero:any){
+    return  this.httpClient.get<Boolean>(PATH.BASE_API_URL+'/enviaClaveAcceso/'+numero,this.options);
   }
+
   recuperarPasswordXNumero(numero:any){
    return this.httpClient.get<string>(PATH.BASE_API_URL+'/olvidoPassword/'+numero,this.options);
 
