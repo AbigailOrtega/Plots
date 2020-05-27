@@ -58,13 +58,21 @@ export class LineaComponent implements OnInit {
     },
   };
   public lineChartColors: Color[] = [
-    { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+    { // green
+      backgroundColor: 'rgba(85,202,112,0.2)',
+      borderColor: 'rgba(85,202,112,1)',
+      pointBackgroundColor: 'rgba(85,202,112,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+      pointHoverBorderColor: 'rgba(85,202,112,0.8)'
+    },
+    { // blue
+      backgroundColor: 'rgba(85,171,202,0.3)',
+      borderColor: 'rgba(85,171,202,1)',
+      pointBackgroundColor: 'rgba(85,171,202,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(85,171,202,0.8)'
     },
     { // dark grey
       backgroundColor: 'rgba(77,83,96,0.2)',
@@ -74,14 +82,6 @@ export class LineaComponent implements OnInit {
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(77,83,96,1)'
     },
-    { // red
-      backgroundColor: 'rgba(255,0,0,0.3)',
-      borderColor: 'red',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    }
   ];
   public lineChartLegend = true;
   public lineChartType = 'line';

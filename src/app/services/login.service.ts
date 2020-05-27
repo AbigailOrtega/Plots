@@ -13,7 +13,7 @@ export class LoginService {
 
   checkUsuarioPasswordandToken(usuario:User){
   
- let object = '{ "idUsuario" : "", "usuario" : "' + usuario.userName + '", "password" : "'+usuario.password+
+ let object = '{ "idUsuario" : "", "username" : "' + usuario.userName + '", "password" : "'+usuario.password+
             '", "usuarioReg" : "", "token": "'+usuario.token+'" , "telefono": "", "solicitud":"", "aviso":1 }';
     console.log("LOGGEANDO " + object);
 
@@ -40,10 +40,12 @@ export class LoginService {
     return true;
   }
   sentTokenSMSLogin(token:any){
+    
 return true;
   }
   recuperarPasswordXNumero(numero:any){
-return true;
+   return this.httpClient.get<string>(PATH.BASE_API_URL+'/olvidoPassword/'+numero,this.options);
+
   }
 }
 

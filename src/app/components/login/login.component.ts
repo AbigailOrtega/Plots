@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  textoOlvidarPassword:string;
   formModalRecueperarPassword: FormGroup;
   contrasenaEnviada: Boolean;
   parentForm: FormGroup;
@@ -57,8 +58,15 @@ export class LoginComponent implements OnInit {
   }
   enviarSMSPasswordModal(form: any) {
     //enviar sms parar recuperar contraseña
-    this.loginService.recuperarPasswordXNumero(form)
-    this.contrasenaEnviada = true;
+    this.loginService.recuperarPasswordXNumero(form.value.numero).subscribe(data=>{
+      this.textoOlvidarPassword=data;
+      this.contrasenaEnviada = true;
+    },Error=>{
+      this.textoOlvidarPassword="Contraseña no enviada ocurrio un error.";
+      this.contrasenaEnviada = true;
+    }
+    )
+    
   }
   open(content) {
     this.modalService.open(content);

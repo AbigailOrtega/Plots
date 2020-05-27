@@ -14,13 +14,13 @@ export class AdministracionComponent implements OnInit {
   textAdministracion:string;
  parentForm:FormGroup;
  dataPermisos:Permiso[]=[
-   {name:"Agregar Nuevo Usuario", valor:".f"},
-   {name:"Reportes y Estadísticas", valor:".f"},
-   {name:"Consultar Histórico", valor:".f"},
-   {name:"Agregar Noticia y Break News", valor:".f"},
-   {name:"Agregar Encuesta", valor:".f"},
-   {name:"Detener Envío", valor:".f"},
-   {name:"Recbir Alertas SMS", valor:".f"}]
+   {name:"Agregar Nuevo Usuario", valor:"1"},
+   {name:"Reportes y Estadísticas", valor:"4"},
+   {name:"Consultar Histórico", valor:"6"},
+   {name:"Agregar Noticia y Break News", valor:"5"},
+   {name:"Agregar Encuesta", valor:"11"},
+   {name:"Detener Envío", valor:"12"},
+   {name:"Recbir Alertas SMS", valor:"13"}]
   constructor(private router:Router, private fb: FormBuilder, private modalService:NgbModal, private administracionService:AdministracionService) { 
     if(!localStorage.getItem('token') && !localStorage.getItem('user')){
       this.router.navigate(['/login']);
