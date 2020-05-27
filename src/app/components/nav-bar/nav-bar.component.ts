@@ -8,12 +8,17 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router) { 
+   
+  }
+
 
   ngOnInit(): void {
   }
 
- 
+ get date(){
+   return new Date();
+ }
   get localStorageAttribute(){
     return localStorage.getItem('token') && localStorage.getItem('user');
   }

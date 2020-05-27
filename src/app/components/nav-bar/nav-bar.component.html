@@ -3,11 +3,12 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <button class="btn btn-link" routerLink="noticiaRegular">Ayuda<span class="sr-only">(current)</span></button>
-            <button *ngIf="localStorageAttribute" type="button" class="btn btn-link" routerLink="administracion">| Administrar</button>
-            <button *ngIf="localStorageAttribute" type="button" (click)="logOut()" class="btn btn-link">| Salir</button>
+    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+        <div class="navbar-nav navbarTelcel">
+            <button type="button" class="btn navbarTelcel">México D.F., {{date | date:'mediumDate'}}</button>
+            <button class="btn btn-link navbarTelcel" routerLink="noticiaRegular">| Ayuda<span class="sr-only">(current)</span></button>
+            <button *ngIf="localStorageAttribute" type="button" class="btn btn-link navbarTelcel" routerLink="administracion">| Administrar</button>
+            <button *ngIf="localStorageAttribute" type="button" (click)="logOut()" class="btn btn-linknavbarTelcel">| Salir</button>
         </div>
     </div>
 </nav>
