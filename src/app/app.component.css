@@ -1,15 +1,10 @@
-html {
-    min-height: 100vh;
-    position: relative;
-}
-
 body {
     margin: 0;
     margin-bottom: 40px;
 }
 
 .principalContainer {
-    min-height: 100vh;
+    min-height: 70vh;
     background-color: #E8EFF9;
     margin-right: 10px;
     margin-left: 10px;
