@@ -18,7 +18,6 @@ export class AdministracionComponent implements OnInit {
    {name:"Reportes y Estadísticas", valor:"4"},
    {name:"Consultar Histórico", valor:"6"},
    {name:"Agregar Noticia y Break News", valor:"5"},
-   {name:"Agregar Encuesta", valor:"11"},
    {name:"Detener Envío", valor:"12"},
    {name:"Recbir Alertas SMS", valor:"13"}]
   constructor(private router:Router, private fb: FormBuilder, private modalService:NgbModal, private administracionService:AdministracionService) { 

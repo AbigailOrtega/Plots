@@ -28,4 +28,51 @@ export class NavBarComponent implements OnInit {
      localStorage.removeItem('user');
      this.router.navigate(['/login']);
   }
+
+   
+
+   get nuevoUsuario(){
+     if(localStorage.getItem('1')){
+       return true;
+     }
+     else{
+       return false;
+     }
+   }
+
+   get estadisticasReportes(){
+    if(localStorage.getItem('4')){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  get historico(){
+    if(localStorage.getItem('6')){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  get agregarNoticia(){
+    if(localStorage.getItem('5')){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  get detenerEnvio(){
+    if(localStorage.getItem('12')){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }

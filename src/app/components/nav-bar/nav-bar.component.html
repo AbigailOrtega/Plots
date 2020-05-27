@@ -7,7 +7,7 @@
         <div class="navbar-nav navbarTelcel">
             <button type="button" class="btn navbarTelcel">México D.F., {{date | date:'mediumDate'}}</button>
             <button class="btn btn-link navbarTelcel" routerLink="noticiaRegular">| Ayuda<span class="sr-only">(current)</span></button>
-            <button *ngIf="localStorageAttribute" type="button" class="btn btn-link navbarTelcel" routerLink="administracion">| Administrar</button>
+            <button *ngIf="localStorageAttribute && nuevoUsuario" type="button" class="btn btn-link navbarTelcel" routerLink="administracion">| Administrar</button>
             <button *ngIf="localStorageAttribute" type="button" (click)="logOut()" class="btn btn-link navbarTelcel">| Salir</button>
         </div>
     </div>
@@ -21,11 +21,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" routerLink="noticiaRegular">Noticia Regular<span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" routerLink="ntociaUrgente">Noticia Urgente</a>
-                <a class="nav-item nav-link" routerLink="grafico">Reportes y Estadisticas</a>
-                <a class="nav-item nav-link" routerLink="noticiaHistorico">Historico de Noticias</a>
-                <a class="nav-item nav-link" href="#">Envio</a>
+                <a *ngIf="agregarNoticia" class="nav-item nav-link active" routerLink="noticiaRegular">Noticia Regular<span class="sr-only">(current)</span></a>
+                <a *ngIf="agregarNoticia" class="nav-item nav-link" routerLink="ntociaUrgente">Noticia Urgente</a>
+                <a *ngIf="estadisticasReportes" class="nav-item nav-link" routerLink="grafico">Reportes y Estadisticas</a>
+                <a *ngIf="historico" class="nav-item nav-link" routerLink="noticiaHistorico">Historico de Noticias</a>
+                <a *ngIf="detenerEnvio" class="nav-item nav-link" href="#">Envio</a>
             </div>
         </div>
     </nav>

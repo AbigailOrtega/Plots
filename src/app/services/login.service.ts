@@ -26,6 +26,10 @@ export class LoginService {
         localStorage.setItem('user', response.username);
         localStorage.setItem('time', date.toTimeString());
         localStorage.setItem('date', date.toDateString());
+        for(let i of response.autorities){
+         console.log(i,i);
+         localStorage.setItem(i, i);
+        }
         this.router.navigate(['/noticiaRegular']);
       },
       Error =>{
@@ -58,5 +62,5 @@ export interface User{
 export interface UserStorage{
   username:string;
   token:string;
-  permisos:string[];
+  autorities:string[];
 }
