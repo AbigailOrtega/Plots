@@ -100,7 +100,7 @@
         </button>
     </div>
 
-    <form [formGroup]="formModalRecueperarPassword" (ngSubmit)="enviarSMSPasswordModal(formModalSMS) ">
+    <form [formGroup]="formModalRecueperarPassword" (ngSubmit)="enviarSMSPasswordModal(formModalRecueperarPassword) ">
         <div class="modal-body ">
             <label *ngIf="contrasenaEnviada "> {{textoOlvidarPassword}}</label>
             <label *ngIf="!contrasenaEnviada ">Recuerda que la contraseña es sensible al uso de mayúsculas y minúsculas. Por favor ingresa tú numero celular Telcel a 10 dígitos y te será enviada tu contraseña por medio de un mensaje de texto SMS.</label>

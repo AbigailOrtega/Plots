@@ -14,7 +14,7 @@ export class LoginService {
   checkUsuarioPasswordandToken(usuario:User){
   
  let object = '{ "idUsuario" : "", "username" : "' + usuario.userName + '", "password" : "'+usuario.password+
-            '", "usuarioReg" : "", "token": "'+usuario.token+'" , "telefono": "", "solicitud":"", "aviso":1 }';
+            '", "usuarioReg" : "", "clave": "'+usuario.token+'" , "telefono": "", "solicitud":"", "aviso":1 }';
     console.log("LOGGEANDO " + object);
 
     this.httpClient.post<UserStorage>(PATH.BASE_API_URL + "/login", object, this.options).subscribe(
