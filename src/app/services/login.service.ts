@@ -27,10 +27,11 @@ export class LoginService {
         localStorage.setItem('time', date.toTimeString());
         localStorage.setItem('date', date.toDateString());
         for(let i of response.autorities){
+          console.log('permiso');
          console.log(i,i);
          localStorage.setItem(i, i);
         }
-        this.router.navigate(['/noticiaRegular']);
+        this.router.navigate(['/EGInforma/NoticiaRegular']);
       },
       Error =>{
         localStorage.removeItem('token');

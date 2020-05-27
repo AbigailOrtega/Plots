@@ -9,11 +9,11 @@ import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
-  { path: 'grafico', component: LineaComponent },
-  { path:'noticiaRegular', component:NoticiaRegularComponent},
-  { path:'ntociaUrgente', component:NoticiaUrgenteComponent},
-  { path:'noticiaHistorico', component:NoticiaHistoricoComponent},
-  { path:'administracion', component:AdministracionComponent},
+  { path: 'EGInforma/smsc', component: LineaComponent },
+  { path:'EGInforma/NoticiaRegular', component:NoticiaRegularComponent},
+  { path:'EGInforma/NoticiaUrgente', component:NoticiaUrgenteComponent},
+  { path:'EGInforma/Historico', component:NoticiaHistoricoComponent},
+  { path:'EGInforma/administracion', component:AdministracionComponent},
   { path: 'login', component:LoginComponent},
   {path: '', component : NoticiaRegularComponent}
 ];
