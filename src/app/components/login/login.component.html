@@ -66,29 +66,32 @@
 </div>
 
 <ng-template #content let-c="close " let-d="dismiss ">
-    <div class="modal-header ">
-        <h4 class="modal-title " id="modal-basic-title ">Ingresar la Clave que recibiste por Mensaje de Texto (SMS)</h4>
+    <div  class="modal-header ">
+        <h4 *ngIf="!errorCredentials" class="modal-title " id="modal-basic-title ">Ingresar la Clave que recibiste por Mensaje de Texto (SMS)</h4>
+        <h4 *ngIf="errorCredentials" class="modal-title " id="modal-basic-title ">Error </h4>
         <button type="button " class="close " aria-label="Close " (click)="d( 'Cross click') ">
             <span aria-hidden="true ">&times;</span>
         </button>
     </div>
 
-    <form [formGroup]="formModalSMS " (ngSubmit)="checkSMSToken(formModalSMS) ">
+    <form  [formGroup]="formModalSMS " (ngSubmit)="checkSMSToken(formModalSMS) ">
         <div class="modal-body ">
-            <label>
+            <label *ngIf="errorCredentials">
+                Tus credenciales son incorrectas.</label>
+            <label *ngIf="!errorCredentials">
                 Se ha generado y enviado una clave la cual recibiste por mensaje de texto, favor de ingresarla.</label>
-            <input type="texto " formControlName="smsClave">
-            <div class="row ">
+            <input *ngIf="!errorCredentials" type="texto " formControlName="smsClave">
+            <div *ngIf="!errorCredentials" class="row ">
                 <small class="text-danger " *ngIf="smsClaveNoValido ">El valor es requerido</small>
             </div>
         </div>
 
         <div class="modal-footer ">
-            <button [disabled]="!formModalSMS.valid " type="submit " class="btn btn-outline-dark ">Enviar</button>
+            <button *ngIf="!errorCredentials" [disabled]="!formModalSMS.valid " type="submit " class="btn btn-outline-dark ">Enviar</button>
             <button type="button " class="btn btn-outline-dark " (click)="c( 'Save click') ">Cerrar</button>
         </div>
     </form>
-
+    
 
 </ng-template>
 

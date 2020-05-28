@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  errorCredentials:boolean;
   textoOlvidarPassword:string;
   formModalRecueperarPassword: FormGroup;
   contrasenaEnviada: Boolean;
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   login(content: any, form: any) {
+    this.errorCredentials=false;
     //check login and sent sms
     console.log(form.value.nombreUsuario);
     this.userLogin.password=form.value.contrasena;
@@ -50,9 +52,35 @@ export class LoginComponent implements OnInit {
     });
   }
   checkSMSToken(form: any) {
+    this.errorCredentials=false;
     this.userLogin.token=form.value.smsClave;
-    this.loginService.checkUsuarioPasswordandToken(this.userLogin);
-    this.modalService.dismissAll();
+    this.loginService.checkUsuarioPasswordandToken(this.userLogin).subscribe(
+      response => {
+        let date=new Date();
+        console.log(date);
+        response.token.replace('\n','');
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('user', response.username);
+        localStorage.setItem('time', date.toTimeString());
+        localStorage.setItem('date', date.toDateString());
+        for(let i of response.autorities){
+          console.log('permiso');
+         console.log(i,i);
+         localStorage.setItem(i, i);
+        }
+        this.router.navigate(['/EGInforma/NoticiaRegular']);
+        this.modalService.dismissAll();
+      },
+      Error =>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('time');
+        localStorage.removeItem('date');
+        this.errorCredentials=true;
+        return false;
+      }
+    )
+   
   }
   recuperarPassword(content) {
     this.open(content);

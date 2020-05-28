@@ -17,32 +17,8 @@ export class LoginService {
             '", "usuarioReg" : "", "clave": "'+usuario.token+'" , "telefono": "", "solicitud":"", "aviso":1 }';
     console.log("LOGGEANDO " + object);
 
-    this.httpClient.post<UserStorage>(PATH.BASE_API_URL + "/login", object, this.options).subscribe(
-      response => {
-        let date=new Date();
-        console.log(date);
-        response.token.replace('\n','');
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('user', response.username);
-        localStorage.setItem('time', date.toTimeString());
-        localStorage.setItem('date', date.toDateString());
-        for(let i of response.autorities){
-          console.log('permiso');
-         console.log(i,i);
-         localStorage.setItem(i, i);
-        }
-        this.router.navigate(['/EGInforma/NoticiaRegular']);
-      },
-      Error =>{
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        localStorage.removeItem('time');
-        localStorage.removeItem('date');
-        this.router.navigate(['/login']);
-        return false;
-      }
-    )
-    return true;
+   return this.httpClient.post<UserStorage>(PATH.BASE_API_URL + "/login", object, this.options);
+   
   }
   sentTokenSMSLogin(numero:any){
     return  this.httpClient.get<Boolean>(PATH.BASE_API_URL+'/enviaClaveAcceso/'+numero,this.options);
