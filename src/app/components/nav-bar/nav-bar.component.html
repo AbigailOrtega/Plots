@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
         <div class="navbar-nav navbarTelcel">
             <button type="button" class="btn navbarTelcel">México D.F., {{date | date:'mediumDate'}}</button>
-            <button class="btn btn-link navbarTelcel" routerLink="noticiaRegular">| Ayuda<span class="sr-only">(current)</span></button>
+            <button class="btn btn-link navbarTelcel" routerLink="EGInforma/ayuda">| Ayuda<span class="sr-only">(current)</span></button>
             <button *ngIf="localStorageAttribute && nuevoUsuario" type="button" class="btn btn-link navbarTelcel" routerLink="EGInforma/administracion">| Administrar</button>
             <button *ngIf="localStorageAttribute" type="button" (click)="logOut()" class="btn btn-link navbarTelcel">| Salir</button>
         </div>

@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
          console.log(i,i);
          localStorage.setItem(i, i);
         }
-        this.router.navigate(['/EGInforma/NoticiaRegular']);
+        this.router.navigate(['/EGInforma/ayuda']);
         this.modalService.dismissAll();
       },
       Error =>{

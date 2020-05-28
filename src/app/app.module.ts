@@ -16,6 +16,7 @@ import { NoticiaUrgenteComponent } from './components/noticia-urgente/noticia-ur
 import { NoticiaHistoricoComponent } from './components/noticia-historico/noticia-historico.component';
 import { AdministracionComponent } from './components/administracion/administracion.component';
 import { LoginComponent } from './components/login/login.component';
+import { HelpComponent } from './components/help/help.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoginComponent } from './components/login/login.component';
     NoticiaUrgenteComponent,
     NoticiaHistoricoComponent,
     AdministracionComponent,
-    LoginComponent
+    LoginComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,

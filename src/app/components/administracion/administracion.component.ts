@@ -52,7 +52,7 @@ save(content:any,parentForm:any){
   console.log(parentForm.value);
   this.administracionService.crearUsuario(parentForm.value.nombreUsuario,parentForm.value.contrasena,parentForm.value.numeroTelefonico,parentForm.value.permisos).subscribe(data=>{
     this.textAdministracion=data;
-    this.router.navigate(['/EGInforma/NoticiaRegular']);
+    this.router.navigate(['/EGInforma/ayuda']);
   this.open(content);
   });
 }

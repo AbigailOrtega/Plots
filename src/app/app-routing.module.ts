@@ -6,6 +6,7 @@ import { NoticiaUrgenteComponent } from './components/noticia-urgente/noticia-ur
 import { NoticiaHistoricoComponent } from './components/noticia-historico/noticia-historico.component';
 import { AdministracionComponent } from './components/administracion/administracion.component';
 import { LoginComponent } from './components/login/login.component';
+import { HelpComponent } from './components/help/help.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path:'EGInforma/Historico', component:NoticiaHistoricoComponent},
   { path:'EGInforma/administracion', component:AdministracionComponent},
   { path: 'EGInforma/login', component:LoginComponent},
-  {path: '', component : NoticiaRegularComponent}
+  { path: 'EGInforma/ayuda', component:HelpComponent},
+  {path: '', component : HelpComponent}
 ];
 
 
