@@ -13,7 +13,7 @@ export class NoticiaRegularComponent implements OnInit {
     this.noticiaNacional=true;
     this.noticiaUrgente=false;
     if(!localStorage.getItem('token') && !localStorage.getItem('user')){
-      this.router.navigate(['/login']);
+      this.router.navigate(['/EGInforma/login']);
     }
   }
 

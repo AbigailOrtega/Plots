@@ -59,12 +59,18 @@ export class LoginComponent implements OnInit {
         let date=new Date();
         console.log(date);
         response.token.replace('\n','');
+        localStorage.removeItem('4');
+        localStorage.removeItem('6');
+        localStorage.removeItem('1');
+        localStorage.removeItem('5');
+        localStorage.removeItem('11');
+        localStorage.removeItem('12');
+        localStorage.removeItem('13');
         localStorage.setItem('token', response.token);
         localStorage.setItem('user', response.username);
         localStorage.setItem('time', date.toTimeString());
         localStorage.setItem('date', date.toDateString());
         for(let i of response.autorities){
-          console.log('permiso');
          console.log(i,i);
          localStorage.setItem(i, i);
         }

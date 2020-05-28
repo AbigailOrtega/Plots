@@ -14,7 +14,7 @@ const routes: Routes = [
   { path:'EGInforma/NoticiaUrgente', component:NoticiaUrgenteComponent},
   { path:'EGInforma/Historico', component:NoticiaHistoricoComponent},
   { path:'EGInforma/administracion', component:AdministracionComponent},
-  { path: 'login', component:LoginComponent},
+  { path: 'EGInforma/login', component:LoginComponent},
   {path: '', component : NoticiaRegularComponent}
 ];
 

@@ -14,7 +14,7 @@ export class NoticiaUrgenteComponent implements OnInit {
     this.noticiaNacional=true;
     this.noticiaUrgente=true;
     if(!localStorage.getItem('token') && !localStorage.getItem('user')){
-      this.router.navigate(['/login']);
+      this.router.navigate(['/EGInforma/login']);
     }
   }
 

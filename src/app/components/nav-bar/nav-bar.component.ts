@@ -24,9 +24,16 @@ export class NavBarComponent implements OnInit {
   }
 
   logOut(){
+    localStorage.removeItem('4');
+    localStorage.removeItem('6');
+    localStorage.removeItem('1');
+    localStorage.removeItem('5');
+    localStorage.removeItem('11');
+    localStorage.removeItem('12');
+    localStorage.removeItem('13');
     localStorage.removeItem('token') ;
      localStorage.removeItem('user');
-     this.router.navigate(['/login']);
+     this.router.navigate(['EGInforma/login']);
   }
 
    

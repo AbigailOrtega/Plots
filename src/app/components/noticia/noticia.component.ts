@@ -109,7 +109,7 @@ export class NoticiaComponent implements OnInit {
         localStorage.removeItem('user');
         localStorage.removeItem('time');
         localStorage.removeItem('date');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/EGInforma/login']);
         return false;
       }
       )
@@ -136,7 +136,7 @@ export class NoticiaComponent implements OnInit {
         localStorage.removeItem('user');
         localStorage.removeItem('time');
         localStorage.removeItem('date');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/EGInforma/login']);
         return false;
       })
     }else{
@@ -149,7 +149,7 @@ export class NoticiaComponent implements OnInit {
         localStorage.removeItem('user');
         localStorage.removeItem('time');
         localStorage.removeItem('date');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/EGInforma/login']);
         return false;
       });
     }
