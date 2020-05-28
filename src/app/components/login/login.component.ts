@@ -71,7 +71,6 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('time', date.toTimeString());
         localStorage.setItem('date', date.toDateString());
         for(let i of response.autorities){
-         console.log(i,i);
          localStorage.setItem(i, i);
         }
         this.router.navigate(['/EGInforma/ayuda']);

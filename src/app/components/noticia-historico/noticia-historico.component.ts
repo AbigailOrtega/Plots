@@ -39,7 +39,6 @@ export class NoticiaHistoricoComponent implements OnInit {
     const dayEnd=(form.value.endDate.day<10)?"0"+form.value.endDate.day:form.value.endDate.day.toString();
     const monthEnd=(form.value.endDate.month<10)?"0"+form.value.endDate.month:form.value.endDate.month.toString();
     this.historicoService.getHistoricoList(form.value.startDate.year+"-"+monthStart+"-"+dayStart,form.value.endDate.year+"-"+monthEnd+"-"+dayEnd).subscribe(data=>{
-      console.log(data);
       this.historico=data;
     },
     Error =>{
@@ -58,7 +57,6 @@ export class NoticiaHistoricoComponent implements OnInit {
 
  showSupcriptroes(content){
   this.historicoService.getSubscriptores().subscribe(data=>{
-    console.log(data);
     this.subscriptores=data;
     this.open(content);
   },

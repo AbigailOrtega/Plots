@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ChartDataSets } from 'chart.js';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { stringify } from 'querystring';
+import { PATH } from '../pathVariable';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class DataServiceService {
    // let num26:number[];
     let charData:ChartDataSets[];
 
-    return this.httpClient.get("http://intranet.telcel.com:9046/GraficaInformaRest/"+day+"-"+month+"-"+request.year,this.options);
+    return this.httpClient.get(PATH.BASE_API_URL+"/GraficaInformaRest/"+day+"-"+month+"-"+request.year,this.options);
   }
 }
 
