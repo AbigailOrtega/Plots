@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
     this.showButton=true;
     if(localStorage.getItem('token') && localStorage.getItem('user')){
       this.router.navigate(['/ayuda']);
+    }else{
+      this.router.navigate(['/login']);
     }
     this.formModalRecueperarPassword =new FormGroup({
       numero: new FormControl("",[Validators.required, Validators.minLength(10),Validators.maxLength(10)])

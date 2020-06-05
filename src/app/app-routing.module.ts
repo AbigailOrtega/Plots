@@ -17,8 +17,8 @@ const routes: Routes = [
   { path:'administracion', component:AdministracionComponent},
   { path: 'login', component:LoginComponent},
   { path: 'ayuda', component:HelpComponent},
-  {path: '', component : HelpComponent},
-  {path: '**', component : HelpComponent}
+  {path: '', component : LoginComponent},
+  {path: '**', component : LoginComponent}
 ];
 
 
