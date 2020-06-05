@@ -19,7 +19,11 @@ export class NoticiaHistoricoComponent implements OnInit {
 
   constructor(private router:Router, private modalService: NgbModal,private historicoService: NoticiaHistoricoService, private excelService: ExcelServiceService) {
     if(!localStorage.getItem('token') && !localStorage.getItem('user')){
-      this.router.navigate(['/EGInforma/login']);
+      this.router.navigate(['/login']);
+    }else{
+        if(!localStorage.getItem('6')){
+          this.router.navigate(['/ayuda']);
+        }
     }
     this.showTable=false;
     this.formHistorico= new FormGroup({
@@ -46,7 +50,7 @@ export class NoticiaHistoricoComponent implements OnInit {
       localStorage.removeItem('user');
       localStorage.removeItem('time');
       localStorage.removeItem('date');
-      this.router.navigate(['/EGInforma/login']);
+      this.router.navigate(['/login']);
       return false;
     })
     this.showTable=true;
@@ -65,7 +69,7 @@ export class NoticiaHistoricoComponent implements OnInit {
     localStorage.removeItem('user');
     localStorage.removeItem('time');
     localStorage.removeItem('date');
-    this.router.navigate(['/EGInforma/login']);
+    this.router.navigate(['/login']);
     return false;
   })
   

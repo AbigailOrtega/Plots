@@ -13,8 +13,12 @@ export class NoticiaRegularComponent implements OnInit {
     this.noticiaNacional=true;
     this.noticiaUrgente=false;
     if(!localStorage.getItem('token') && !localStorage.getItem('user')){
-      this.router.navigate(['/EGInforma/login']);
-    }
+      this.router.navigate(['/login']);
+    }else{
+      if(!localStorage.getItem('5')){
+        this.router.navigate(['/ayuda']);
+      }
+  }
   }
 
   elegirTipNoticia(tipo:string){

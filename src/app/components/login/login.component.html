@@ -54,7 +54,7 @@
                         <div class="row">
                             <div class="col-md-8"></div>
                             <div class="col-md-2 buttonEntrar">
-                                <button [disabled]="!parentForm.valid " type="submit " class="btn btn-success ">Entrar</button>
+                                <button [disabled]="!parentForm.valid || !showButton" type="submit " class="btn btn-success ">Entrar</button>
                             </div>
                         </div>
                     </div>

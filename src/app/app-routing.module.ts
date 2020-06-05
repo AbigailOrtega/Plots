@@ -10,14 +10,15 @@ import { HelpComponent } from './components/help/help.component';
 
 
 const routes: Routes = [
-  { path: 'EGInforma/smsc', component: LineaComponent },
-  { path:'EGInforma/NoticiaRegular', component:NoticiaRegularComponent},
-  { path:'EGInforma/NoticiaUrgente', component:NoticiaUrgenteComponent},
-  { path:'EGInforma/Historico', component:NoticiaHistoricoComponent},
-  { path:'EGInforma/administracion', component:AdministracionComponent},
-  { path: 'EGInforma/login', component:LoginComponent},
-  { path: 'EGInforma/ayuda', component:HelpComponent},
-  {path: '', component : HelpComponent}
+  { path: 'smsc', component: LineaComponent },
+  { path:'NoticiaRegular', component:NoticiaRegularComponent},
+  { path:'NoticiaUrgente', component:NoticiaUrgenteComponent},
+  { path:'Historico', component:NoticiaHistoricoComponent},
+  { path:'administracion', component:AdministracionComponent},
+  { path: 'login', component:LoginComponent},
+  { path: 'ayuda', component:HelpComponent},
+  {path: '', component : HelpComponent},
+  {path: '**', component : HelpComponent}
 ];
 
 

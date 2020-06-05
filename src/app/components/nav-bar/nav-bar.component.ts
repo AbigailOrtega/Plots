@@ -33,7 +33,7 @@ export class NavBarComponent implements OnInit {
     localStorage.removeItem('13');
     localStorage.removeItem('token') ;
      localStorage.removeItem('user');
-     this.router.navigate(['EGInforma/login']);
+     this.router.navigate(['login']);
   }
 
    

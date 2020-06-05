@@ -23,6 +23,10 @@ export class AdministracionComponent implements OnInit {
   constructor(private router:Router, private fb: FormBuilder, private modalService:NgbModal, private administracionService:AdministracionService) { 
     if(!localStorage.getItem('token') && !localStorage.getItem('user')){
       this.router.navigate(['/login']);
+    }else{
+      if(!localStorage.getItem('1')){
+        this.router.navigate(['/ayuda']);
+      }
     }
     this.parentForm=this.fb.group({
       nombreUsuario: new FormControl("",[Validators.required,Validators.maxLength(12)]),
@@ -52,7 +56,7 @@ save(content:any,parentForm:any){
   console.log(parentForm.value);
   this.administracionService.crearUsuario(parentForm.value.nombreUsuario,parentForm.value.contrasena,parentForm.value.numeroTelefonico,parentForm.value.permisos).subscribe(data=>{
     this.textAdministracion=data;
-    this.router.navigate(['/EGInforma/ayuda']);
+    this.router.navigate(['/ayuda']);
   this.open(content);
   });
 }

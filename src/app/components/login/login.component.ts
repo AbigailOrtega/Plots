@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  showButton:boolean;
   errorCredentials:boolean;
   textoOlvidarPassword:string;
   formModalRecueperarPassword: FormGroup;
@@ -22,8 +23,9 @@ export class LoginComponent implements OnInit {
     token:" "
   };
   constructor(private modalService: NgbModal, private loginService: LoginService, private router:Router) {
+    this.showButton=true;
     if(localStorage.getItem('token') && localStorage.getItem('user')){
-      this.router.navigate(['/noticiaRegular']);
+      this.router.navigate(['/ayuda']);
     }
     this.formModalRecueperarPassword =new FormGroup({
       numero: new FormControl("",[Validators.required, Validators.minLength(10),Validators.maxLength(10)])
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
   }
   login(content: any, form: any) {
     this.errorCredentials=false;
+    this.showButton=false;
     //check login and sent sms
     console.log(form.value.nombreUsuario);
     this.userLogin.password=form.value.contrasena;
@@ -73,10 +76,12 @@ export class LoginComponent implements OnInit {
         for(let i of response.autorities){
          localStorage.setItem(i, i);
         }
-        this.router.navigate(['/EGInforma/ayuda']);
+        this.showButton=true;
+        this.router.navigate(['/ayuda']);
         this.modalService.dismissAll();
       },
       Error =>{
+        this.showButton=true;
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         localStorage.removeItem('time');

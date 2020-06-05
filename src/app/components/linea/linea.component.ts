@@ -90,8 +90,12 @@ export class LineaComponent implements OnInit {
 
   constructor(private router:Router,public dataService: DataServiceService) { 
     if(!localStorage.getItem('token') && !localStorage.getItem('user')){
-      this.router.navigate(['/EGInforma/login']);
-    }
+      this.router.navigate(['/login']);
+    }else{
+      if(!localStorage.getItem('4')){
+        this.router.navigate(['/ayuda']);
+      }
+  }
   }
 
   ngOnInit() {
@@ -122,7 +126,7 @@ export class LineaComponent implements OnInit {
         localStorage.removeItem('user');
         localStorage.removeItem('time');
         localStorage.removeItem('date');
-        this.router.navigate(['/EGInforma/login']);
+        this.router.navigate(['/login']);
         return false;
       }
     );

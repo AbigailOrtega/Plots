@@ -61,6 +61,13 @@ export class NoticiaComponent implements OnInit {
 
   constructor( private router: Router,private noticiaService:NoticiaService,private modalService: NgbModal,private fb: FormBuilder
     ) {
+      if(!localStorage.getItem('token') && !localStorage.getItem('user')){
+        this.router.navigate(['/login']);
+      }else{
+        if(!localStorage.getItem('5')){
+          this.router.navigate(['/ayuda']);
+        }
+    }
     this.parentForm=this.fb.group({
       textoNoticia: new FormControl("",[Validators.required,Validators.maxLength(160)]),
       arrayEstados: this.fb.array([])
@@ -109,7 +116,7 @@ export class NoticiaComponent implements OnInit {
         localStorage.removeItem('user');
         localStorage.removeItem('time');
         localStorage.removeItem('date');
-        this.router.navigate(['/EGInforma/login']);
+        this.router.navigate(['/login']);
         return false;
       }
       )
@@ -136,7 +143,7 @@ export class NoticiaComponent implements OnInit {
         localStorage.removeItem('user');
         localStorage.removeItem('time');
         localStorage.removeItem('date');
-        this.router.navigate(['/EGInforma/login']);
+        this.router.navigate(['/login']);
         return false;
       })
     }else{
@@ -149,7 +156,7 @@ export class NoticiaComponent implements OnInit {
         localStorage.removeItem('user');
         localStorage.removeItem('time');
         localStorage.removeItem('date');
-        this.router.navigate(['/EGInforma/login']);
+        this.router.navigate(['/login']);
         return false;
       });
     }
