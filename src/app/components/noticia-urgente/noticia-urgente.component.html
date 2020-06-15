@@ -6,10 +6,10 @@
         <div class="col-md-3">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" (click)="elegirTipNoticia('n')">Noticia Nacional</a>
+                    <a class="nav-link" [ngClass]="statusClassN" (click)="elegirTipNoticia('n')">Noticia Nacional</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" (click)="elegirTipNoticia('l')">Noticial Local</a>
+                    <a class="nav-link" [ngClass]="statusClassL" (click)="elegirTipNoticia('l')">Noticial Local</a>
                 </li>
             </ul>
         </div>

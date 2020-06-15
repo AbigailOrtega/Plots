@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./noticia-urgente.component.css']
 })
 export class NoticiaUrgenteComponent implements OnInit {
-
+  statusClassN = 'active';
+  statusClassL = 'not-active';
   noticiaNacional:Boolean;
   noticiaUrgente:Boolean;
   constructor(private router: Router) { 
@@ -24,8 +25,12 @@ export class NoticiaUrgenteComponent implements OnInit {
 
   elegirTipNoticia(tipo:string){
     if(tipo=='n'){
+      this.statusClassN = 'active';
+      this.statusClassL = 'not-active';
       this.noticiaNacional=true;
     }else{
+      this.statusClassL = 'active';
+      this.statusClassN = 'not-active';
       this.noticiaNacional=false;
     }
   }

@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
          localStorage.setItem(i, i);
         }
         this.showButton=true;
-        this.router.navigate(['/ayuda']);
+        this.router.navigate(['/NoticiaRegular']);
         this.modalService.dismissAll();
       },
       Error =>{

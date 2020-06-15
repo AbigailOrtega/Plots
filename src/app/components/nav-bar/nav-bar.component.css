@@ -31,3 +31,6 @@
     color: white;
     margin-left: auto;
 }
+.active-link{
+  font-weight: bold;
+}

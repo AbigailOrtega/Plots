@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class NoticiaRegularComponent implements OnInit {
   noticiaNacional:Boolean;
   noticiaUrgente:Boolean;
+  statusClassN = 'active';
+  statusClassL = 'not-active';
   constructor(private router:Router) { 
     this.noticiaNacional=true;
     this.noticiaUrgente=false;
@@ -23,8 +25,12 @@ export class NoticiaRegularComponent implements OnInit {
 
   elegirTipNoticia(tipo:string){
     if(tipo=='n'){
+      this.statusClassN = 'active';
+      this.statusClassL = 'not-active';
       this.noticiaNacional=true;
     }else{
+      this.statusClassL = 'active';
+      this.statusClassN = 'not-active';
       this.noticiaNacional=false;
     }
   }
